@@ -1,0 +1,184 @@
+{
+  "free_sources": {
+    "yahoo_finance": {
+      "enabled": true,
+      "type": "api",
+      "base_url": "https://query1.finance.yahoo.com",
+      "rate_limit": 2000,
+      "rate_limit_period": "hour",
+      "delay_between_requests": 0.5,
+      "coverage": ["stocks", "crypto", "etf", "forex", "commodities", "options"],
+      "markets": ["US", "HK", "CN", "JP", "UK", "DE", "CA", "AU"],
+      "data_delay": "15 minutes"
+    },
+    "coingecko": {
+      "enabled": true,
+      "type": "api",
+      "base_url": "https://api.coingecko.com/api/v3",
+      "rate_limit": 50,
+      "rate_limit_period": "minute",
+      "delay_between_requests": 1.2,
+      "coverage": ["crypto"],
+      "data_delay": "1-2 minutes"
+    },
+    "eastmoney": {
+      "enabled": true,
+      "type": "api",
+      "base_url": "https://push2.eastmoney.com",
+      "alternate_urls": [
+        "https://data.eastmoney.com",
+        "https://datacenter-web.eastmoney.com"
+      ],
+      "rate_limit": 100,
+      "rate_limit_period": "minute",
+      "delay_between_requests": 0.5,
+      "coverage": ["a_shares", "hk_stocks", "ipo", "funds", "bonds", "futures"],
+      "markets": ["CN", "HK"],
+      "data_delay": "real-time",
+      "language": "zh-CN"
+    },
+    "sina_finance": {
+      "enabled": true,
+      "type": "api",
+      "base_url": "https://hq.sinajs.cn",
+      "alternate_urls": [
+        "https://finance.sina.com.cn"
+      ],
+      "rate_limit": 100,
+      "rate_limit_period": "minute",
+      "delay_between_requests": 0.3,
+      "coverage": ["a_shares", "hk_stocks", "us_stocks", "forex"],
+      "markets": ["CN", "HK", "US"],
+      "data_delay": "real-time",
+      "language": "zh-CN"
+    },
+    "cninfo": {
+      "enabled": true,
+      "type": "web",
+      "base_url": "http://www.cninfo.com.cn",
+      "rate_limit": 30,
+      "rate_limit_period": "minute",
+      "delay_between_requests": 2.0,
+      "coverage": ["prospectus", "announcements", "financials", "ipo"],
+      "markets": ["CN"],
+      "language": "zh-CN"
+    },
+    "hkex": {
+      "enabled": true,
+      "type": "api",
+      "base_url": "https://www.hkexnews.hk",
+      "rate_limit": 30,
+      "rate_limit_period": "minute",
+      "delay_between_requests": 2.0,
+      "coverage": ["hk_ipo", "announcements", "disclosure"],
+      "markets": ["HK"],
+      "language": "en/zh"
+    },
+    "sec_edgar": {
+      "enabled": true,
+      "type": "api",
+      "base_url": "https://www.sec.gov/cgi-bin/browse-edgar",
+      "rate_limit": 10,
+      "rate_limit_period": "second",
+      "delay_between_requests": 0.1,
+      "coverage": ["us_ipo", "filings", "s1", "10k", "10q"],
+      "markets": ["US"],
+      "language": "en"
+    },
+    "fred": {
+      "enabled": true,
+      "type": "api",
+      "base_url": "https://api.stlouisfed.org/fred",
+      "rate_limit": 120,
+      "rate_limit_period": "minute",
+      "delay_between_requests": 0.5,
+      "coverage": ["macro", "gdp", "cpi", "interest_rates", "employment"],
+      "markets": ["US"],
+      "requires_api_key": true,
+      "env_var": "FRED_API_KEY"
+    },
+    "nasdaq_ipo": {
+      "enabled": true,
+      "type": "web",
+      "base_url": "https://www.nasdaq.com/market-activity/ipos",
+      "rate_limit": 30,
+      "rate_limit_period": "minute",
+      "delay_between_requests": 2.0,
+      "coverage": ["us_ipo"],
+      "markets": ["US"]
+    }
+  },
+  "paid_sources": {
+    "wind": {
+      "enabled": false,
+      "type": "sdk",
+      "requires_api_key": true,
+      "env_var": "WIND_API_KEY",
+      "coverage": ["all"],
+      "markets": ["CN", "HK", "US"],
+      "note": "Requires Wind Terminal subscription"
+    },
+    "ifind": {
+      "enabled": false,
+      "type": "sdk",
+      "requires_api_key": true,
+      "env_var": "IFIND_API_KEY",
+      "coverage": ["all"],
+      "markets": ["CN", "HK"],
+      "note": "Requires TongHuaShun iFinD subscription"
+    },
+    "bloomberg": {
+      "enabled": false,
+      "type": "sdk",
+      "requires_api_key": true,
+      "env_var": "BLOOMBERG_API_KEY",
+      "coverage": ["all"],
+      "markets": ["global"],
+      "note": "Requires Bloomberg Terminal subscription"
+    },
+    "alpha_vantage": {
+      "enabled": false,
+      "type": "api",
+      "base_url": "https://www.alphavantage.co/query",
+      "requires_api_key": true,
+      "env_var": "ALPHA_VANTAGE_API_KEY",
+      "rate_limit": 5,
+      "rate_limit_period": "minute",
+      "coverage": ["stocks", "forex", "crypto", "technical_indicators"],
+      "markets": ["US", "global"]
+    }
+  },
+  "source_priority": {
+    "a_shares": ["eastmoney", "sina_finance", "yahoo_finance"],
+    "hk_stocks": ["eastmoney", "sina_finance", "yahoo_finance"],
+    "us_stocks": ["yahoo_finance", "sina_finance"],
+    "crypto": ["coingecko", "yahoo_finance"],
+    "a_share_ipo": ["eastmoney", "cninfo"],
+    "hk_ipo": ["hkex", "eastmoney"],
+    "us_ipo": ["sec_edgar", "nasdaq_ipo", "yahoo_finance"],
+    "macro": ["fred", "eastmoney"],
+    "bonds": ["eastmoney", "yahoo_finance"],
+    "options": ["yahoo_finance"]
+  },
+  "market_codes": {
+    "a_share_shanghai": {
+      "prefix": ["600", "601", "603", "605", "688"],
+      "suffix": ".SS"
+    },
+    "a_share_shenzhen": {
+      "prefix": ["000", "001", "002", "003", "300", "301"],
+      "suffix": ".SZ"
+    },
+    "hk_main": {
+      "format": "5_digits",
+      "suffix": ".HK"
+    },
+    "us_stocks": {
+      "format": "ticker_only",
+      "suffix": ""
+    },
+    "crypto_yahoo": {
+      "suffix": "-USD"
+    }
+  }
+}

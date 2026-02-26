@@ -1,0 +1,30 @@
+# Core Dependencies
+yfinance>=0.2.0
+pandas>=2.0.0
+numpy>=1.24.0
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+pytz>=2023.3
+
+# Visualization
+matplotlib>=3.7.0
+mplfinance>=0.12.9
+plotly>=5.15.0
+kaleido>=0.2.1
+
+# Scientific Computing & Analysis
+scipy>=1.11.0
+scikit-learn>=1.3.0
+
+# Macroeconomic Data
+fredapi>=0.5.0
+
+# Caching & Rate Limiting
+cachetools>=5.3.0
+tenacity>=8.2.0
+
+# Optional: Premium Data Sources (install if needed)
+# tigeropen>=2.0.0      # Tiger Broker API
+# futu-api>=7.0.0       # Futu OpenD API
+# ib_insync>=0.9.0      # Interactive Brokers API

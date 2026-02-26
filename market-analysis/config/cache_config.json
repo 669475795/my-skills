@@ -1,0 +1,26 @@
+{
+  "cache_enabled": true,
+  "cache_directory": ".cache/market-analysis",
+  "memory_cache": {
+    "enabled": true,
+    "max_size": 1000,
+    "ttl_seconds": 300
+  },
+  "file_cache": {
+    "enabled": true,
+    "max_size_mb": 500,
+    "cleanup_interval_hours": 24
+  },
+  "ttl_by_data_type": {
+    "realtime_quote": 60,
+    "daily_ohlcv": 3600,
+    "historical_data": 86400,
+    "fundamental_data": 86400,
+    "news": 900,
+    "ipo_calendar": 3600,
+    "macro_data": 86400,
+    "options_chain": 300,
+    "bond_yields": 3600
+  },
+  "cache_key_format": "{source}_{data_type}_{symbol}_{params_hash}"
+}

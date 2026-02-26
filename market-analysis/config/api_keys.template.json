@@ -1,0 +1,12 @@
+{
+  "_comment": "Copy this file to api_keys.json and fill in your API keys. DO NOT commit api_keys.json to version control.",
+  "fred_api_key": "",
+  "alpha_vantage_api_key": "",
+  "newsapi_key": "",
+  "wind_api_key": "",
+  "ifind_api_key": "",
+  "bloomberg_api_key": "",
+  "polygon_api_key": "",
+  "twelve_data_api_key": "",
+  "finnhub_api_key": ""
+}

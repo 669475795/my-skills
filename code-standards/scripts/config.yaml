@@ -1,0 +1,143 @@
+# Code Standards Configuration File
+# This file defines thresholds and settings for code quality checks
+
+# Cyclomatic Complexity Thresholds
+thresholds:
+  # Maximum complexity for individual methods/functions
+  # Recommended: 10 (conservative), 15 (moderate), 20 (relaxed)
+  method: 10
+
+  # Maximum complexity for a class
+  # Recommended: 50 (conservative), 80 (moderate), 100 (relaxed)
+  class: 50
+
+  # Maximum complexity for an entire file
+  # Recommended: 100 (conservative), 150 (moderate), 200 (relaxed)
+  file: 100
+
+# Language-specific settings
+languages:
+  java:
+    extensions:
+      - .java
+    enabled: true
+    # Java-specific standards
+    standards:
+      - google-style-guide
+      - alibaba-java-guide
+      - owasp-security
+
+  python:
+    extensions:
+      - .py
+    enabled: true
+    # Python-specific standards
+    standards:
+      - google-style-guide
+      - pep8
+      - owasp-security
+
+# Patterns to exclude from analysis
+exclude_patterns:
+  # Test directories and files
+  - "*/test/*"
+  - "*/tests/*"
+  - "*Test.java"
+  - "test_*.py"
+
+  # Generated code
+  - "*/generated/*"
+  - "*/target/*"
+  - "*/build/*"
+
+  # Third-party code
+  - "*/vendor/*"
+  - "*/node_modules/*"
+
+# Design Pattern Requirements
+design_patterns:
+  # Enforce specific patterns for certain scenarios
+  builder:
+    # Use Builder pattern when constructor has N+ parameters
+    min_parameters: 4
+
+  factory:
+    # Suggest factory methods for complex object creation
+    enabled: true
+
+# Security Settings
+security:
+  # OWASP checks
+  sql_injection: true
+  xss_prevention: true
+  csrf_protection: true
+  authentication_checks: true
+  authorization_checks: true
+
+  # Sensitive data patterns to warn about
+  sensitive_patterns:
+    - "password"
+    - "secret"
+    - "api_key"
+    - "private_key"
+    - "token"
+
+# Code Style Settings
+style:
+  # Line length limits
+  max_line_length:
+    java: 120
+    python: 79
+
+  # Indentation
+  indentation:
+    java: 4  # spaces
+    python: 4  # spaces
+
+  # Naming conventions
+  naming:
+    java:
+      class: "UpperCamelCase"
+      method: "lowerCamelCase"
+      constant: "CONSTANT_CASE"
+      variable: "lowerCamelCase"
+
+    python:
+      class: "CapWords"
+      function: "lowercase_with_underscores"
+      constant: "CAPS_WITH_UNDERSCORES"
+      variable: "lowercase_with_underscores"
+
+# Documentation Requirements
+documentation:
+  # Require docstrings/Javadoc
+  require_docstrings: true
+
+  # Minimum docstring length (characters)
+  min_docstring_length: 20
+
+  # Elements that must have documentation
+  require_for:
+    - public_classes
+    - public_methods
+    - complex_functions  # CC > 5
+
+# Metrics Reporting
+reporting:
+  # Output format: text, json, html
+  format: text
+
+  # Show detailed violations
+  show_details: true
+
+  # Show suggestions for fixes
+  show_suggestions: true
+
+  # Fail build on violations
+  fail_on_violation: false
+
+  # Severity levels to report
+  report_levels:
+    - error
+    - warning
+    - info
