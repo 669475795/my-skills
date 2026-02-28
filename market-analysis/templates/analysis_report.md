@@ -1,222 +1,123 @@
-# {{ASSET_NAME}} Analysis Report
+# {{ASSET_NAME}} 分析报告
 
-**Generated**: {{DATE}}
-**Market**: {{MARKET}}
-**Analyst**: AI-Assisted Analysis
+**日期**: {{DATE}} | **市场**: {{MARKET}} | **数据来源**: {{PRICE_SOURCE}} ({{DATA_DELAY}})
 
 ---
 
-## Executive Summary
+## 结论 ← 先看这里
 
-| Metric | Value |
-|--------|-------|
-| **Current Price** | {{CURRENT_PRICE}} |
-| **Change** | {{PRICE_CHANGE}} ({{PRICE_CHANGE_PCT}}%) |
-| **Recommendation** | {{RECOMMENDATION}} |
-| **Confidence Level** | {{CONFIDENCE}} |
-| **Time Horizon** | {{TIME_HORIZON}} |
-| **Risk Level** | {{RISK_LEVEL}} |
+```
+判断:  [强烈看多 / 看多 / 中性 / 看空 / 强烈看空]
+信号强度: [强 / 中 / 弱]  置信度: {{CONFIDENCE}}%
+时间周期: {{TIME_HORIZON}}  风险等级: {{RISK_LEVEL}}
+```
 
----
+| 关键价位 | 价格 |
+|---------|------|
+| 当前价格 | {{CURRENT_PRICE}} |
+| 目标价（主要） | {{TARGET_PRICE_1}} |
+| 目标价（乐观） | {{TARGET_PRICE_2}} |
+| 止损位 | {{STOP_LOSS}} |
+| 支撑位 | {{SUPPORT_1}} |
+| 阻力位 | {{RESISTANCE_1}} |
+| 风险/回报比 | {{RISK_REWARD}} |
 
-## Market Data
+**判断依据（3句话核心逻辑）**:
+{{CORE_REASONING}}
 
-### Price Information
-| Metric | Value |
-|--------|-------|
-| Open | {{OPEN}} |
-| High | {{HIGH}} |
-| Low | {{LOW}} |
-| Close | {{CLOSE}} |
-| Previous Close | {{PREV_CLOSE}} |
-| 52-Week High | {{WEEK52_HIGH}} |
-| 52-Week Low | {{WEEK52_LOW}} |
-
-### Volume & Liquidity
-| Metric | Value |
-|--------|-------|
-| Volume | {{VOLUME}} |
-| Avg Volume (10D) | {{AVG_VOLUME_10D}} |
-| Volume vs Avg | {{VOLUME_VS_AVG}} |
-| Market Cap | {{MARKET_CAP}} |
-
-### Fundamental Metrics
-| Metric | Value | Industry Avg |
-|--------|-------|--------------|
-| P/E Ratio | {{PE_RATIO}} | {{PE_INDUSTRY_AVG}} |
-| Forward P/E | {{FORWARD_PE}} | - |
-| P/B Ratio | {{PB_RATIO}} | {{PB_INDUSTRY_AVG}} |
-| P/S Ratio | {{PS_RATIO}} | - |
-| EV/EBITDA | {{EV_EBITDA}} | - |
-| Dividend Yield | {{DIVIDEND_YIELD}} | - |
-| ROE | {{ROE}} | - |
-| Debt/Equity | {{DEBT_EQUITY}} | - |
+**仓位建议**: 保守 {{POSITION_CONSERVATIVE}}% | 适中 {{POSITION_MODERATE}}% | 激进 {{POSITION_AGGRESSIVE}}%
 
 ---
 
-## Recent News & Events
+## 主要风险
 
-### Key Headlines
+1. **{{RISK_1_CATEGORY}}**: {{RISK_1_DESCRIPTION}}
+2. **{{RISK_2_CATEGORY}}**: {{RISK_2_DESCRIPTION}}
+3. **{{RISK_3_CATEGORY}}**: {{RISK_3_DESCRIPTION}}
+
+---
+
+## 技术分析
+
+### 趋势
+
+| 指标 | 数值 | 信号 |
+|------|------|------|
+| SMA(20) | {{SMA_20}} | {{SMA_20_SIGNAL}} |
+| SMA(50) | {{SMA_50}} | {{SMA_50_SIGNAL}} |
+| SMA(200) | {{SMA_200}} | {{SMA_200_SIGNAL}} |
+
+### 动量 & 波动
+
+| 指标 | 数值 | 信号 |
+|------|------|------|
+| RSI(14) | {{RSI_14}} | {{RSI_SIGNAL}} |
+| MACD | {{MACD}} | {{MACD_SIGNAL}} |
+| 布林带位置 | {{BB_POSITION}} | {{BB_SIGNAL}} |
+| ATR(14) | {{ATR_14}} | — |
+
+### 技术评分
+
+| 周期 | 评分 | 解读 |
+|------|------|------|
+| 短期(1-4周) | {{SCORE_SHORT}}/10 | {{INTERP_SHORT}} |
+| 中期(1-3月) | {{SCORE_MEDIUM}}/10 | {{INTERP_MEDIUM}} |
+| 长期(3-12月) | {{SCORE_LONG}}/10 | {{INTERP_LONG}} |
+
+---
+
+## 基本面（股票适用）
+
+| 指标 | 数值 | 行业均值 | 评价 |
+|------|------|---------|------|
+| P/E | {{PE_RATIO}} | {{PE_INDUSTRY_AVG}} | {{PE_ASSESSMENT}} |
+| Forward P/E | {{FORWARD_PE}} | — | — |
+| P/B | {{PB_RATIO}} | {{PB_INDUSTRY_AVG}} | {{PB_ASSESSMENT}} |
+| EV/EBITDA | {{EV_EBITDA}} | — | — |
+| ROE | {{ROE}} | — | — |
+| 营收增速(YoY) | {{REVENUE_GROWTH}} | — | — |
+| 净利率 | {{NET_MARGIN}} | — | — |
+| 债务/权益 | {{DEBT_EQUITY}} | — | — |
+| 股息率 | {{DIVIDEND_YIELD}} | — | — |
+
+---
+
+## 市场情绪
+
+| 指标 | 数值 | 状态 |
+|------|------|------|
+| 恐贪指数 | {{FEAR_GREED}} | {{FEAR_GREED_STATUS}} |
+| VIX | {{VIX}} | {{VIX_STATUS}} |
+| 分析师共识 | {{CONSENSUS}} | 目标价: {{TARGET_AVG}} |
+
+---
+
+## 近期新闻 & 事件
+
 {{#NEWS_ITEMS}}
-- **{{NEWS_DATE}}**: {{NEWS_HEADLINE}}
-  - Source: {{NEWS_SOURCE}}
-  - Sentiment: {{NEWS_SENTIMENT}}
+- **{{NEWS_DATE}}** {{NEWS_HEADLINE}} — *{{NEWS_SENTIMENT}}*
 {{/NEWS_ITEMS}}
 
-### Upcoming Events
+**即将到来的事件**:
 {{#EVENTS}}
 - **{{EVENT_DATE}}**: {{EVENT_DESCRIPTION}}
 {{/EVENTS}}
 
 ---
 
-## Technical Analysis
+## 市场数据（参考）
 
-### Trend Analysis
-| Indicator | Value | Signal |
-|-----------|-------|--------|
-| SMA (20) | {{SMA_20}} | {{SMA_20_SIGNAL}} |
-| SMA (50) | {{SMA_50}} | {{SMA_50_SIGNAL}} |
-| SMA (200) | {{SMA_200}} | {{SMA_200_SIGNAL}} |
-| EMA (12) | {{EMA_12}} | - |
-| EMA (26) | {{EMA_26}} | - |
-
-### Momentum Indicators
-| Indicator | Value | Signal |
-|-----------|-------|--------|
-| RSI (14) | {{RSI_14}} | {{RSI_SIGNAL}} |
-| MACD | {{MACD}} | {{MACD_SIGNAL}} |
-| MACD Signal | {{MACD_SIGNAL_LINE}} | - |
-| MACD Histogram | {{MACD_HISTOGRAM}} | - |
-
-### Volatility
-| Indicator | Value |
-|-----------|-------|
-| Bollinger Upper | {{BB_UPPER}} |
-| Bollinger Middle | {{BB_MIDDLE}} |
-| Bollinger Lower | {{BB_LOWER}} |
-| ATR (14) | {{ATR_14}} |
-| Historical Volatility | {{HIST_VOLATILITY}} |
-
-### Support & Resistance
-| Level | Price | Strength |
-|-------|-------|----------|
-| Resistance 3 | {{RESISTANCE_3}} | - |
-| Resistance 2 | {{RESISTANCE_2}} | - |
-| Resistance 1 | {{RESISTANCE_1}} | - |
-| **Current** | {{CURRENT_PRICE}} | - |
-| Support 1 | {{SUPPORT_1}} | - |
-| Support 2 | {{SUPPORT_2}} | - |
-| Support 3 | {{SUPPORT_3}} | - |
-
-### Technical Score Summary
-| Timeframe | Score | Interpretation |
-|-----------|-------|----------------|
-| Short-term | {{SCORE_SHORT}} | {{INTERP_SHORT}} |
-| Medium-term | {{SCORE_MEDIUM}} | {{INTERP_MEDIUM}} |
-| Long-term | {{SCORE_LONG}} | {{INTERP_LONG}} |
+| | 数值 |
+|-|------|
+| 52周高点 | {{WEEK52_HIGH}} |
+| 52周低点 | {{WEEK52_LOW}} |
+| 今日涨跌 | {{PRICE_CHANGE}} ({{PRICE_CHANGE_PCT}}%) |
+| 成交量 vs 均量 | {{VOLUME_VS_AVG}} |
+| 市值 | {{MARKET_CAP}} |
+| Beta | {{BETA}} |
+| VaR(95%, 1日) | {{VAR_95}} |
 
 ---
 
-## Sentiment Analysis
-
-### Market Sentiment
-| Indicator | Value | Status |
-|-----------|-------|--------|
-| Fear & Greed Index | {{FEAR_GREED}} | {{FEAR_GREED_STATUS}} |
-| Put/Call Ratio | {{PUT_CALL}} | {{PUT_CALL_STATUS}} |
-| VIX Level | {{VIX}} | {{VIX_STATUS}} |
-
-### Analyst Ratings
-| Rating | Count |
-|--------|-------|
-| Strong Buy | {{STRONG_BUY}} |
-| Buy | {{BUY}} |
-| Hold | {{HOLD}} |
-| Sell | {{SELL}} |
-| Strong Sell | {{STRONG_SELL}} |
-| **Consensus** | {{CONSENSUS}} |
-
-### Price Targets
-| Metric | Price |
-|--------|-------|
-| High Target | {{TARGET_HIGH}} |
-| Average Target | {{TARGET_AVG}} |
-| Low Target | {{TARGET_LOW}} |
-| Current Price | {{CURRENT_PRICE}} |
-| Upside/Downside | {{UPSIDE_DOWNSIDE}} |
-
----
-
-## Risk Assessment
-
-### Volatility Metrics
-| Metric | Value | Interpretation |
-|--------|-------|----------------|
-| Beta | {{BETA}} | {{BETA_INTERP}} |
-| Standard Deviation (1Y) | {{STD_1Y}} | - |
-| Max Drawdown (1Y) | {{MAX_DRAWDOWN}} | - |
-| VaR (95%, 1-day) | {{VAR_95}} | - |
-
-### Risk Factors
-{{#RISK_FACTORS}}
-- **{{RISK_CATEGORY}}**: {{RISK_DESCRIPTION}}
-{{/RISK_FACTORS}}
-
----
-
-## Investment Thesis
-
-### Bull Case
-{{BULL_CASE}}
-
-### Bear Case
-{{BEAR_CASE}}
-
-### Key Catalysts
-{{#CATALYSTS}}
-- {{CATALYST}}
-{{/CATALYSTS}}
-
----
-
-## Recommendation
-
-### Summary
-**Recommendation**: {{RECOMMENDATION}}
-**Target Price**: {{TARGET_PRICE}}
-**Stop Loss**: {{STOP_LOSS}}
-**Risk/Reward Ratio**: {{RISK_REWARD}}
-
-### Reasoning
-{{REASONING}}
-
-### Position Sizing Guidance
-- **Conservative**: {{POSITION_CONSERVATIVE}}% of portfolio
-- **Moderate**: {{POSITION_MODERATE}}% of portfolio
-- **Aggressive**: {{POSITION_AGGRESSIVE}}% of portfolio
-
----
-
-## Data Sources
-
-- Price Data: {{PRICE_SOURCE}} ({{DATA_DELAY}})
-- Fundamental Data: {{FUNDAMENTAL_SOURCE}}
-- Technical Analysis: Calculated using standard indicators
-- News: {{NEWS_SOURCES}}
-
----
-
-## Disclaimer
-
-This analysis is generated for informational purposes only and does not constitute financial advice. The information provided is based on data available at the time of generation and may not reflect current market conditions.
-
-**Important Considerations:**
-- Past performance does not guarantee future results
-- All investments carry risk of loss
-- Market conditions can change rapidly
-- This analysis may contain errors or omissions
-- Consult a licensed financial advisor before making investment decisions
-- Only invest what you can afford to lose
-
-**Last Updated**: {{TIMESTAMP}}
+> **免责声明**: 本报告仅供参考，不构成投资建议。投资有风险，入市需谨慎。过往表现不代表未来收益。
+> 数据更新时间: {{TIMESTAMP}}

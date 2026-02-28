@@ -1,6 +1,6 @@
 ---
 name: code-standards
-description: Comprehensive code quality checker for Java and Python that ensures code meets industry standards including design patterns, code style, security best practices, and cyclomatic complexity thresholds. Use this skill when: (1) Writing new code (proactively check as you write), (2) User writes code and needs validation, (3) User requests manual/comprehensive code review or audit, (4) Refactoring existing code to improve quality, (5) User mentions any of these standards - Google Style Guide, Alibaba Java Guide, PEP 8, OWASP security, cyclomatic complexity, code quality, design patterns, or code review. The skill supports multiple standards and allows users to specify which standards to apply.
+description: "Comprehensive code quality checker for Java and Python that ensures code meets industry standards including design patterns, code style, security best practices, and cyclomatic complexity thresholds. Use this skill when: (1) Writing new code (proactively check as you write), (2) User writes code and needs validation, (3) User requests manual/comprehensive code review or audit, (4) Refactoring existing code to improve quality, (5) User mentions any of these standards - Google Style Guide, Alibaba Java Guide, PEP 8, OWASP security, cyclomatic complexity, code quality, design patterns, or code review. The skill supports multiple standards and allows users to specify which standards to apply."
 ---
 
 # Code Standards Checker
@@ -61,8 +61,8 @@ When multiple standards conflict on the same issue, use this priority order:
 4. Cyclomatic Complexity metrics
 
 **Known Conflicts (Java):**
-- **Indentation**: Google (2 spaces) vs Alibaba (4 spaces) → Use Google (2 spaces)
-- **Line length**: Google (100 chars) vs Alibaba (120 chars) → Use Google (100 chars)
+- **Indentation**: Google (2 spaces) vs Alibaba (4 spaces) 鈫?Use Google (2 spaces)
+- **Line length**: Google (100 chars) vs Alibaba (120 chars) 鈫?Use Google (100 chars)
 - **Boolean POJO fields**: Both agree - don't use `is` prefix for Boolean wrapper types
 - **Best practices**: When both provide guidance, prefer Google for style, Alibaba for domain-specific (DB, concurrency, Chinese context)
 
@@ -132,8 +132,8 @@ If automated tools are not available, manually assess:
 - Count decision points (if, while, for, case, &&, ||, catch, ternary)
 - Calculate: CC = 1 + number of decision points
 - Compare against thresholds:
-  - Method: ≤ 10 (conservative), ≤ 15 (moderate), ≤ 20 (relaxed)
-  - File: ≤ 100 (conservative), ≤ 150 (moderate), ≤ 200 (relaxed)
+  - Method: 鈮?10 (conservative), 鈮?15 (moderate), 鈮?20 (relaxed)
+  - File: 鈮?100 (conservative), 鈮?150 (moderate), 鈮?200 (relaxed)
 
 See `references/complexity-metrics.md` for detailed examples and refactoring strategies.
 
@@ -172,7 +172,7 @@ Structure your findings clearly:
 
 | File | Function | Line | CC | Threshold | Status |
 |------|----------|------|----|-----------|----- --|
-| Foo.java | processOrder | 45 | 12 | 10 | ⚠️ Warning |
+| Foo.java | processOrder | 45 | 12 | 10 | 鈿狅笍 Warning |
 
 **High Complexity Functions**:
 - `Foo.processOrder()` (CC=12): Consider extracting methods or using strategy pattern
@@ -295,18 +295,18 @@ Assistant:
 
 ## Severity Levels
 
-**Error (🔴)**: Must fix
+**Error (馃敶)**: Must fix
 - Security vulnerabilities
 - Code that violates language specifications
 - Complexity far exceeding thresholds (CC > 20)
 
-**Warning (⚠️)**: Should fix
+**Warning (鈿狅笍)**: Should fix
 - Style violations
 - Moderate complexity (CC 11-20)
 - Missing documentation
 - Code smells
 
-**Info (ℹ️)**: Consider fixing
+**Info (鈩癸笍)**: Consider fixing
 - Style preferences
 - Optimization suggestions
 - Alternative patterns
