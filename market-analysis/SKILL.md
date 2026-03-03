@@ -1,11 +1,18 @@
 ---
 name: market-analysis
-description: Financial market analysis for stocks, bonds, options, crypto, metals, and macroeconomic data. Use for investment analysis, technical/fundamental analysis, IPO evaluation, portfolio management, sector rotation, cross-asset macro analysis, and market research. Supports US, Hong Kong, China A-share markets. Triggers on: stock/crypto tickers, "分析", "行情", "市场", "投资", "估值", "板块", "宏观", "配置", "打新", "链上", IPO queries, and portfolio/risk questions.
+description: >-
+  Financial market analysis for stocks, bonds, options, crypto, metals, and
+  macroeconomic data. Use for investment analysis, technical/fundamental
+  analysis, IPO evaluation, portfolio management, sector rotation, cross-asset
+  macro analysis, and market research. Supports US, Hong Kong, China A-share
+  markets. Triggers on stock/crypto tickers, "分析", "行情", "市场", "投资",
+  "估值", "板块", "宏观", "配置", "打新", "链上", IPO queries, and
+  portfolio/risk questions.
 ---
 
 # Market Analysis Skill
 
-## Workflow — Start Here
+## Workflow - Start Here
 
 **Step 1: Classify the request** using the table below.
 **Step 2: Follow the matching workflow** from `references/ai-workflow.md`.
@@ -31,14 +38,14 @@ description: Financial market analysis for stocks, bonds, options, crypto, metal
 ## Output Requirements
 
 Every analysis MUST include (in order):
-1. **Verdict first**: Bullish / Bearish / Neutral — state it immediately
+1. **Verdict first**: Bullish / Bearish / Neutral - state it immediately
 2. **Signal strength**: Strong / Moderate / Weak with confidence %
 3. **Key data points**: 3-5 specific numbers supporting verdict
 4. **Price levels**: current, target, stop-loss, support/resistance
 5. **Risk factors**: At least 2 specific risks that could invalidate thesis
 6. **Disclaimer**: Brief investment risk note
 
-Never use vague language ("might go up") — always state specific targets and levels.
+Never use vague language ("might go up") - always state specific targets and levels.
 
 ---
 
@@ -109,7 +116,7 @@ python scripts/chart_generator.py --heatmap --tickers "{TICKERS}"
 
 | Document | Load When |
 |----------|-----------|
-| [`ai-workflow.md`](references/ai-workflow.md) | Always — start here for workflow |
+| [`ai-workflow.md`](references/ai-workflow.md) | Always - start here for workflow |
 | [`fundamental-analysis.md`](references/fundamental-analysis.md) | Stock valuation, earnings, DCF, red flags |
 | [`crypto-onchain.md`](references/crypto-onchain.md) | Crypto/DeFi/on-chain analysis |
 | [`sector-rotation.md`](references/sector-rotation.md) | Sector analysis, industry rotation |
@@ -168,4 +175,4 @@ export IB_PORT=7497
 
 ## Disclaimer
 
-Analysis is for educational purposes only — not financial advice. Always conduct own research, consult licensed advisors, and understand investment risks.
+Analysis is for educational purposes only - not financial advice. Always conduct own research, consult licensed advisors, and understand investment risks.
