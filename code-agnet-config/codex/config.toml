@@ -1,0 +1,64 @@
+model = "gpt-5.4"
+model_reasoning_effort = "medium"
+
+approval_policy = "never"
+
+[projects.'C:\Windows\system32']
+trust_level = "trusted"
+
+[projects.'\\?\D:\code\assets-render']
+trust_level = "trusted"
+
+[projects.'\\?\D:\code\grd-backend']
+trust_level = "trusted"
+
+[windows]
+sandbox = "elevated"
+shell_program = "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+shell_args = ["-NoProfile", "-Command"]
+
+[macos]
+shell_program = "/bin/zsh"
+shell_args = ["-f", "-c"]
+
+[macos_bash]
+shell_program = "/bin/bash"
+shell_args = ["--noprofile", "--norc", "-c"]
+
+[defaults]
+autonomous = true
+auto_run_tests = true
+auto_review_diff = true
+auto_commit_when_safe = true
+
+system_prompt = """
+For coding tasks, execute end-to-end by default.
+
+Start by discovering the relevant files, then analyze requirements and impact, implement the change, run focused validation, review the diff, and summarize results in one pass.
+
+For substantial tasks, automatically inspect related code, configs, tests, and entry points before editing. Prefer targeted search over broad repository reads. Continue through related subtasks until the requested outcome is complete.
+
+Do not stop for intermediate confirmation unless the action is destructive, irreversible, requires secrets, payment, production access, or the requirement is materially ambiguous.
+
+Prefer reasonable assumptions and continue. Keep updates concise and spend effort on execution rather than narration.
+
+Auto-commit is allowed only when changes are self-contained, validated, and do not include unrelated user modifications.
+"""
+
+[policies]
+ask_on_destructive_actions = true
+ask_on_production_access = true
+ask_on_missing_credentials = true
+ask_on_material_ambiguity = true
+
+[validation]
+run_relevant_tests = true
+run_lint_when_relevant = true
+run_typecheck_when_relevant = true
+stop_on_failed_validation = true
+
+[git]
+auto_commit_when_safe = true
+allow_amend = false
+include_unrelated_files = false
+default_commit_message_style = "concise"
