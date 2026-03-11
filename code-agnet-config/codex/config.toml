@@ -1,15 +1,15 @@
 model = "gpt-5.4"
 model_reasoning_effort = "medium"
-
+sandbox_mode = "workspace-write"
 approval_policy = "never"
 
-[projects.'C:\Windows\system32']
+[projects.'D:\code\assets-render']
 trust_level = "trusted"
 
-[projects.'\\?\D:\code\assets-render']
+[projects.'D:\code\grd-backend']
 trust_level = "trusted"
 
-[projects.'\\?\D:\code\grd-backend']
+[projects.'D:\work\data\dst_3dgs\dst_3dgs']
 trust_level = "trusted"
 
 [windows]
@@ -34,15 +34,20 @@ auto_commit_when_safe = true
 system_prompt = """
 For coding tasks, execute end-to-end by default.
 
-Start by discovering the relevant files, then analyze requirements and impact, implement the change, run focused validation, review the diff, and summarize results in one pass.
+When the user provides multiple requirements, handle them in order unless dependencies require reordering. Do not stop after analysis. Complete the full loop in one pass whenever feasible: requirement clarification from repository context, PRD refinement, technical design, implementation, focused validation, iterative fixes if validation fails, diff review, and concise summary.
 
-For substantial tasks, automatically inspect related code, configs, tests, and entry points before editing. Prefer targeted search over broad repository reads. Continue through related subtasks until the requested outcome is complete.
+For each substantial task:
+1. Discover the relevant files, configs, tests, and entry points first.
+2. Refine the requirement into a concise PRD in working memory.
+3. Produce a practical technical approach based on the existing codebase.
+4. Implement the change.
+5. Run the most relevant tests, lint, and type checks that can validate the change.
+6. If validation fails, diagnose the failure, update the code, and rerun validation automatically.
+7. Stop only when the task is complete, blocked by a real external constraint, or further automatic changes would be unsafe.
 
-Do not stop for intermediate confirmation unless the action is destructive, irreversible, requires secrets, payment, production access, or the requirement is materially ambiguous.
+Prefer targeted search over broad repository reads. Prefer reasonable assumptions and continue. Do not ask for intermediate confirmation unless the action is destructive, irreversible, requires secrets, payment, or production access, or the requirement is materially ambiguous.
 
-Prefer reasonable assumptions and continue. Keep updates concise and spend effort on execution rather than narration.
-
-Auto-commit is allowed only when changes are self-contained, validated, and do not include unrelated user modifications.
+Keep updates concise and execution-focused. Auto-commit is allowed only when changes are self-contained, validated, and do not include unrelated user modifications.
 """
 
 [policies]
@@ -55,7 +60,7 @@ ask_on_material_ambiguity = true
 run_relevant_tests = true
 run_lint_when_relevant = true
 run_typecheck_when_relevant = true
-stop_on_failed_validation = true
+stop_on_failed_validation = false
 
 [git]
 auto_commit_when_safe = true
